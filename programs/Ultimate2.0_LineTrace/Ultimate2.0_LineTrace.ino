@@ -5,14 +5,8 @@
 MeLineFollower lineFinder(PORT_6);
 
 //motor_setup
-const byte interruptPin =18;    
-const byte NE1=31;                 
-long count=0;
-unsigned long time;
-unsigned long last_time;
 MeMegaPiDCMotor motor1(PORT1B);  
-MeMegaPiDCMotor motor2(PORT2B);
-MeMegaPiDCMotor motor3(PORT3B); 
+MeMegaPiDCMotor motor2(PORT2B); 
 uint8_t motorSpeed = 70;
 uint8_t motorSpeed2 = 70;
 uint8_t motorSpeed3 = 70;
@@ -20,9 +14,6 @@ uint8_t motorStop = 0;
 //motor_setup_end
 
 void setup(){
-  pinMode(interruptPin, INPUT_PULLUP);
-  pinMode(NE1, INPUT);
-  attachInterrupt(digitalPinToInterrupt(interruptPin), blink,RISING);
   Serial.begin(9600);
 }
 
@@ -51,12 +42,4 @@ void loop(){
       break; 
   }
   delay(200);
-}
-
-void blink()
-{
-    if (digitalRead(NE1)>0)   
-    count++;
-    else
-    count = count -1;
 }
