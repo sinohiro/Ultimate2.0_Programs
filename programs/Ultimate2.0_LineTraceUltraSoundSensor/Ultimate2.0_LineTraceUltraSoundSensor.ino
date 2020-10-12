@@ -96,7 +96,7 @@ void loop(){
         motor2.run(-motorSpeed3);
         break; 
     }
-  delay(200);
+  delay(100);
   }
 }
 
