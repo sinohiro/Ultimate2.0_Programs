@@ -6,11 +6,6 @@ MeLineFollower lineFinder(PORT_6);
 MeUltrasonicSensor ultraSensor(PORT_8);
 
 //motor_setup
-const byte interruptPin =18;    
-const byte NE1=31;                 
-long count=0;
-unsigned long time;
-unsigned long last_time;
 MeMegaPiDCMotor motor1(PORT1B);  
 MeMegaPiDCMotor motor2(PORT2B);
 MeMegaPiDCMotor motor3(PORT3B); 
@@ -25,9 +20,6 @@ int WallCount = 0;
 //motor_setup_end
 
 void setup(){
-  pinMode(interruptPin, INPUT_PULLUP);
-  pinMode(NE1, INPUT);
-  attachInterrupt(digitalPinToInterrupt(interruptPin), blink,RISING);
   Serial.begin(9600);
   motor3.run(-motorSpeed3);
   motor4.run(-motorSpeed3);
@@ -37,7 +29,6 @@ void setup(){
 }
 
 void loop(){
-
   //UltraSoundSensor
   Serial.print("Distance : ");
   Serial.print(ultraSensor.distanceCm() );
@@ -92,18 +83,10 @@ void loop(){
         break;
       case S1_OUT_S2_OUT:
         Serial.println("Sensor 1 and 2 are outside of black line");
-        motor1.run(-motorSpeed3);
-        motor2.run(-motorSpeed3);
+        motor1.run(-motorSpeed);
+        motor2.run(-motorSpeed2);
         break; 
     }
   delay(100);
   }
-}
-
-void blink()
-{
-    if (digitalRead(NE1)>0)   
-    count++;
-    else
-    count = count -1;
 }
