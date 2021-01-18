@@ -78,8 +78,8 @@ void loop(){
         break;
       case S1_OUT_S2_IN:
         Serial.println("Sensor 1 is outside of black line");
-        motor1.run(-motorSpeed2);
-        motor2.run(motorSpeed);
+        motor1.run(-motorSpeed);
+        motor2.run(motorSpeed2);
         break;
       case S1_OUT_S2_OUT:
         Serial.println("Sensor 1 and 2 are outside of black line");
